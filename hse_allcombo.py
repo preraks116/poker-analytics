@@ -211,9 +211,9 @@ def HSE(hand, board):
                 ties += 1
             # show_cards(hero_best_hand)
             # show_cards(villain_best_hand)
-            # print(hero_best_hand, villain_best_hand)
-            # print(evaluate_hand(hero_best_hand), evaluate_hand(villain_best_hand))
-            # print(hero_best_rank, villain_best_rank)
+            print(hero_best_hand, villain_best_hand)
+            print(evaluate_hand(hero_best_hand), evaluate_hand(villain_best_hand))
+            print(hero_best_rank, villain_best_rank)
     hse = (wins + ties/2) / (wins + losses + ties)
     print('wins: ', wins)
     print('losses: ', losses)
