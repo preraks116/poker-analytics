@@ -12,8 +12,6 @@ def hse_1(board, hand, num_opps):
     for card in board + hand: 
         deck.cards.remove(card)
 
-    cards_needed = 5 - len(board)
-    board = board + deck.draw(cards_needed)
 
     hero_score = evaluator.evaluate(board, hand)
     hero_class = evaluator.get_rank_class(hero_score)
