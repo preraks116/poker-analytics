@@ -16,8 +16,6 @@ def hse_1(board, hand, num_opps):
     hero_score = evaluator.evaluate(board, hand)
     hero_class = evaluator.get_rank_class(hero_score)
 
-
-
     # for all possible starting hands the opponent could have
     for i in range(len(deck.cards)):
         for j in range(i + 1, len(deck.cards)):

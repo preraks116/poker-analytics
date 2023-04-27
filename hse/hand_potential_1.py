@@ -11,56 +11,62 @@ def HandPotential_1(boardcards, ourcards):
 
     deck = Deck()
 
-    ourrank = evaluator.evaluate(boardcards, ourcards)
+    # print("Hero's cards: ")
+    # Card.print_pretty_cards(ourcards)
 
+    # print("Board: ")
+    # Card.print_pretty_cards(boardcards)
+
+    ourrank = evaluator.evaluate(boardcards, ourcards)
+    # print("Hero's rank: ", ourrank)
     # Remove the cards from the deck.
     for card in boardcards + ourcards:
         deck.cards.remove(card)
 
-    # Consider all two card combinations of the remaining cards for the opponent.
+    # for card in deck.cards:
+    #     count += 1
+    #     Card.print_pretty_card(card)
     for oppcards in itertools.combinations(deck.cards, 2):
-        deck = Deck()
         oppcards = list(oppcards)
+
         # Remove the cards from the deck.
-        for card in boardcards + ourcards + oppcards:
+        for card in oppcards:
             deck.cards.remove(card)
 
         opprank = evaluator.evaluate(boardcards, oppcards)
-
         if ourrank < opprank:
             index = 0 #ahead
         elif ourrank == opprank:
             index = 1 #tied
         else:
             index = 2 #behind
-        HPTotal[index] += 1
-
-        # All possible board cards to come.
-        for card in deck.cards:
-            # Final board.
-            board = boardcards + [card]
-
-            ourbest = evaluator.evaluate(board, ourcards)
-            oppbest = evaluator.evaluate(board, oppcards)
-
+        
+        # All possiblities of next card
+        for next_card in deck.cards:
+            HPTotal[index] += 1
+            updated_board = boardcards + [next_card]
+            ourbest = evaluator.evaluate(updated_board, ourcards)
+            oppbest = evaluator.evaluate(updated_board, oppcards)
+            
             if ourbest < oppbest:
                 HP[index][0] += 1
             elif ourbest == oppbest:
                 HP[index][1] += 1
             else:
                 HP[index][2] += 1
-    
-    # divide every value in HP and HPTotal by 2
-    HP = [[x/2 for x in y] for y in HP]
-    # HPTotal = [x for x in HPTotal]
-
-    # print HP and HPtotal
+        
+        # Readd the cards to the deck.
+        for card in oppcards:
+            deck.cards.append(card)
     print("HP: ", HP)
     print("HPTotal: ", HPTotal)
 
-    Ppot = (HP[2][0] + HP[2][1]/2 + HP[1][0]/2) / (HPTotal[2] + HPTotal[1])
+    # if the last two row of HP is all 0, then Ppot = 0
+    if HP[2][0] == 0 and HP[2][1] == 0 and HP[2][2] == 0 and HP[1][0] == 0 and HP[1][1] == 0 and HP[1][2] == 0:
+        Ppot = 0
+    else:
+        Ppot = (HP[2][0] + HP[2][1]/2 + HP[1][0]/2) / (HPTotal[2] + HPTotal[1])
+    
     Npot = (HP[0][2] + HP[1][2]/2 + HP[0][1]/2) / (HPTotal[0] + HPTotal[1])
-
     print("Ppot: ", Ppot)
     print("Npot: ", Npot)
-            

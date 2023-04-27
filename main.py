@@ -1,89 +1,19 @@
-from deuces import Card, Evaluator, Deck
-from hse.mc_preflop import preflop_monte_carlo
-from hse.hse_1 import hse_1
-from hse.hand_potential_1 import HandPotential_1
-from hse.hand_potential_2 import HandPotential_2
-from hse.percentage_rank import percentage_rank
+from pypokerengine.api.game import setup_config, start_poker
+from heuristicAI import HeuristicPlayer
+from consoleAI import ConsolePlayer 
 
-deck = Deck()
-evaluator = Evaluator()
-num_opps = 1
+init_def_prob = [
+    [0.6, 0.2, 0.0, 0.2],
+    [0.4, 0.4, 0.1, 0.1],
+    [0.1, 0.7, 0.2, 0.0],
+    [0.0, 0.6, 0.4, 0.0],
+    [0.0, 0.3, 0.7, 0.0]
+]
 
-hero_hand = deck.draw(2)
-villain_hand = deck.draw(2)
-print("Hero's hand:")
-Card.print_pretty_cards(hero_hand)
-
-print("Villain's hand:")
-Card.print_pretty_cards(villain_hand)
-print("--------------------")
-print("Preflop:")
-print("Hero:")
-preflop_monte_carlo(hero_hand, 2)
-print("Villain:")
-preflop_monte_carlo(villain_hand, 2)
-print("--------------------")
-
-board = deck.draw(3)
-print("Board:")
-Card.print_pretty_cards(board)
-print("Hero's hand rank: ", percentage_rank(board, hero_hand))
-print("Villain's hand rank: ", percentage_rank(board, villain_hand))
-
-print("--------------------")
-print("HSE1:")
-print("Hero:")
-hse_1(board, hero_hand, num_opps)
-print("Villain:")
-hse_1(board, villain_hand, num_opps)
-print("--------------------")
-print("HandPotential1:")
-print("Hero:")
-HandPotential_2(board, hero_hand)
-print("Villain:")
-HandPotential_2(board, villain_hand)
-print("--------------------")
-
-turn = deck.draw(1)
-board = board + [turn]
-print("Board:")
-Card.print_pretty_cards(board)
-print("Hero's hand rank: ", percentage_rank(board, hero_hand))
-print("Villain's hand rank: ", percentage_rank(board, villain_hand))
-
-print("--------------------")
-print("HandPotential1:")
-print("Hero:")
-HandPotential_1(board, hero_hand)
-print("Villain:")
-HandPotential_1(board, villain_hand)
-
-river = deck.draw(1)
-board = board + [river]
-print("Board:")
-Card.print_pretty_cards(board)
-print("Hero's hand rank: ", percentage_rank(board, hero_hand))
-print("Villain's hand rank: ", percentage_rank(board, villain_hand))
-
-print("--------------------")
-hero_rank = evaluator.evaluate(board, hero_hand)
-villain_rank = evaluator.evaluate(board, villain_hand)
-
-hero_rank_class = evaluator.get_rank_class(hero_rank)
-villain_rank_class = evaluator.get_rank_class(villain_rank)
-
-print("Hero's rank: ", evaluator.class_to_string(hero_rank_class))
-print("Villain's rank: ", evaluator.class_to_string(villain_rank_class))
-
-best_hero_hand = evaluator.get_best_hand(board, hero_hand)
-best_villain_hand = evaluator.get_best_hand(board, villain_hand)
-
-print("Hero's best hand:")
-Card.print_pretty_cards(best_hero_hand)
-print("Villain's best hand:")
-Card.print_pretty_cards(best_villain_hand)
-
-if hero_rank_class > villain_rank_class:
-    print("Hero wins!")
-elif hero_rank_class < villain_rank_class:
-    print("Villain wins!")
+config = setup_config(max_round=10, initial_stack=200, small_blind_amount=1)
+config.register_player(name="AI_1", algorithm=HeuristicPlayer(init_def_prob))
+config.register_player(name="AI_2", algorithm=HeuristicPlayer(init_def_prob))
+# config.register_player(name="AI_3", algorithm=HeuristicPlayer(init_def_prob))
+# config.register_player(name="Human", algorithm=ConsolePlayer())
+game_result = start_poker(config, verbose=1)
+print(game_result)

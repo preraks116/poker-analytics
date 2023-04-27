@@ -88,24 +88,6 @@ class Evaluator(object):
 
         return minimum
 
-    def get_best_hand(self, board, hand):
-        """
-        Returns the best 5 card hand given a board and hand. 
-        """
-        all_cards = board + hand
-        best_hand = None
-        best_score = LookupTable.MAX_HIGH_CARD
-
-        all5cardcombobs = itertools.combinations(all_cards, 5)
-        for combo in all5cardcombobs:
-            
-            score = self._five(combo)
-            if score < best_score:
-                best_score = score
-                best_hand = combo
-
-        return best_hand
-
     def get_rank_class(self, hr):
         """
         Returns the class of hand given the hand hand_rank
