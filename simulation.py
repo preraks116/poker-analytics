@@ -28,18 +28,26 @@ print("--------------------")
 
 # board = deck.draw(3)
 board = [Card.new('Ac'), Card.new('5c'), Card.new('9d')]
+
+# remove the cards from the heros hand, villains hand and the board from the deck
+for card in hero_hand + villain_hand + board:
+    deck.cards.remove(card)
+
 print("Board:")
 Card.print_pretty_cards(board)
 print("Hero's hand rank: ", percentage_rank(board, hero_hand))
 print("Villain's hand rank: ", percentage_rank(board, villain_hand))
 
 print("--------------------")
+
 print("HSE1:")
 print("Hero:")
 hse_1(board, hero_hand, num_opps)
 print("Villain:")
 hse_1(board, villain_hand, num_opps)
+
 print("--------------------")
+
 print("HandPotential2:")
 print("Hero:")
 HandPotential_2(board, hero_hand)
@@ -49,12 +57,14 @@ print("--------------------")
 
 turn = deck.draw(1)
 board = board + [turn]
+
 print("Board:")
 Card.print_pretty_cards(board)
 print("Hero's hand rank: ", percentage_rank(board, hero_hand))
 print("Villain's hand rank: ", percentage_rank(board, villain_hand))
 
 print("--------------------")
+
 print("HandPotential1:")
 print("Hero:")
 HandPotential_1(board, hero_hand)
@@ -63,12 +73,15 @@ HandPotential_1(board, villain_hand)
 
 river = deck.draw(1)
 board = board + [river]
+
 print("Board:")
 Card.print_pretty_cards(board)
+
 print("Hero's hand rank: ", percentage_rank(board, hero_hand))
 print("Villain's hand rank: ", percentage_rank(board, villain_hand))
 
 print("--------------------")
+
 hero_rank = evaluator.evaluate(board, hero_hand)
 villain_rank = evaluator.evaluate(board, villain_hand)
 
@@ -86,7 +99,7 @@ Card.print_pretty_cards(best_hero_hand)
 print("Villain's best hand:")
 Card.print_pretty_cards(best_villain_hand)
 
-if hero_rank_class > villain_rank_class:
+if hero_rank_class < villain_rank_class:
     print("Hero wins!")
-elif hero_rank_class < villain_rank_class:
+elif hero_rank_class > villain_rank_class:
     print("Villain wins!")

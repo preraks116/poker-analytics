@@ -15,7 +15,6 @@ def HandPotential_2(boardcards, ourcards):
 
     # Remove the cards from the deck.
     for card in boardcards + ourcards:
-        # Card.print_pretty_cards([card])
         deck.cards.remove(card)
 
     for oppcards in itertools.combinations(deck.cards, 2):
@@ -48,7 +47,7 @@ def HandPotential_2(boardcards, ourcards):
             else:
                 HP[index][2] += 1
         
-        # Readd the cards to the deck.
+        # Restore the cards to the deck.
         for card in oppcards:
             deck.cards.append(card)
     

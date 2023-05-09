@@ -11,24 +11,17 @@ def HandPotential_1(boardcards, ourcards):
 
     deck = Deck()
 
-    # print("Hero's cards: ")
-    # Card.print_pretty_cards(ourcards)
-
-    # print("Board: ")
-    # Card.print_pretty_cards(boardcards)
-
     ourrank = evaluator.evaluate(boardcards, ourcards)
-    # print("Hero's rank: ", ourrank)
+
     # Remove the cards from the deck.
     Card.print_pretty_cards(boardcards)
     Card.print_pretty_cards(ourcards)
+
     for card in boardcards + ourcards:
         deck.cards.remove(card)
 
-    # for card in deck.cards:
-    #     count += 1
-    #     Card.print_pretty_card(card)
     for oppcards in itertools.combinations(deck.cards, 2):
+
         oppcards = list(oppcards)
 
         # Remove the cards from the deck.
@@ -57,9 +50,10 @@ def HandPotential_1(boardcards, ourcards):
             else:
                 HP[index][2] += 1
         
-        # Readd the cards to the deck.
+        # Restore the cards to the deck.
         for card in oppcards:
             deck.cards.append(card)
+
     print("HP: ", HP)
     print("HPTotal: ", HPTotal)
 
