@@ -12,8 +12,8 @@ init_def_prob = [
 
 config = setup_config(max_round=10, initial_stack=200, small_blind_amount=1)
 config.register_player(name="AI_1", algorithm=HeuristicPlayer(init_def_prob))
-config.register_player(name="AI_2", algorithm=HeuristicPlayer(init_def_prob))
+# config.register_player(name="AI_2", algorithm=HeuristicPlayer(init_def_prob))
 # config.register_player(name="AI_3", algorithm=HeuristicPlayer(init_def_prob))
-# config.register_player(name="Human", algorithm=ConsolePlayer())
+config.register_player(name="Human", algorithm=ConsolePlayer())
 game_result = start_poker(config, verbose=1)
 print(game_result)

@@ -15,4 +15,4 @@ board = [Card.new('3h'), Card.new('4c'), Card.new('Jh')]
 
 # board = [Card.new('Qh'), Card.new('Kh'), Card.new('2c')]
 
-HandPotential_2(board, hand)
+HandPotential_1(board, hand)

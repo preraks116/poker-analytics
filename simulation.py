@@ -9,8 +9,10 @@ deck = Deck()
 evaluator = Evaluator()
 num_opps = 1
 
-hero_hand = deck.draw(2)
-villain_hand = deck.draw(2)
+# hero_hand = deck.draw(2)
+hero_hand = [Card.new('As'), Card.new('2d')]
+# villain_hand = deck.draw(2)
+villain_hand = [Card.new('7d'), Card.new('8d')]
 print("Hero's hand:")
 Card.print_pretty_cards(hero_hand)
 
@@ -24,7 +26,8 @@ print("Villain:")
 preflop_monte_carlo(villain_hand, 2)
 print("--------------------")
 
-board = deck.draw(3)
+# board = deck.draw(3)
+board = [Card.new('Ac'), Card.new('5c'), Card.new('9d')]
 print("Board:")
 Card.print_pretty_cards(board)
 print("Hero's hand rank: ", percentage_rank(board, hero_hand))

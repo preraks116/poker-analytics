@@ -87,6 +87,14 @@ class Evaluator(object):
                 minimum = score
 
         return minimum
+    
+    def get_best_hand(self, cards, board):
+        """
+        Returns the best hand given a set of hole cards and a board. 
+        """
+        all_cards = cards + board
+        all_hands = itertools.combinations(all_cards, 5)
+        return min(all_hands, key=self._five)
 
     def get_rank_class(self, hr):
         """

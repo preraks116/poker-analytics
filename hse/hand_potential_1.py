@@ -20,6 +20,8 @@ def HandPotential_1(boardcards, ourcards):
     ourrank = evaluator.evaluate(boardcards, ourcards)
     # print("Hero's rank: ", ourrank)
     # Remove the cards from the deck.
+    Card.print_pretty_cards(boardcards)
+    Card.print_pretty_cards(ourcards)
     for card in boardcards + ourcards:
         deck.cards.remove(card)
 
