@@ -1,4 +1,5 @@
 from deuces import Card, Evaluator, Deck
+import itertools
 
 evaluator = Evaluator()
 
@@ -38,3 +39,49 @@ def preflop_monte_carlo(hand, num_opps, iterations=100000):
         print("Losses: ", losses)
         print("Ties: ", ties)
         print("Monte Carlo WP: ", wp)
+
+def preflop_wp(hand):
+    wins = 0
+    ties = 0
+    losses = 0
+
+    deck = Deck()
+    for card in hand:
+        deck.cards.remove(card)
+
+    for oppcards in itertools.combinations(deck.cards, 2):
+
+        oppcards = list(oppcards)
+
+        # Remove the cards from the deck.
+        for card in oppcards:
+            deck.cards.remove(card)
+
+        for board in itertools.combinations(deck.cards, 5):
+            
+            board = list(board)
+
+            hero_score = evaluator.evaluate(board, hand)
+            villain_score = evaluator.evaluate(board, oppcards)
+
+            if hero_score < villain_score:
+                wins += 1
+            elif hero_score == villain_score:
+                ties += 1
+            else:
+                losses += 1
+
+        # Restore the cards to the deck.
+        for card in oppcards:
+            deck.cards.append(card)
+
+    wp = (wins + ties / 2) / (wins + losses + ties)
+    print("Wins: ", wins)
+    print("Losses: ", losses)
+    print("Ties: ", ties)
+    print("WP: ", wp)
+
+
+
+
+
