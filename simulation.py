@@ -4,15 +4,16 @@ from hse.hse_1 import hse_1
 from hse.hand_potential_1 import HandPotential_1
 from hse.hand_potential_2 import HandPotential_2
 from hse.percentage_rank import percentage_rank
+from hse.odds import mc_odds_calculator
 
 deck = Deck()
 evaluator = Evaluator()
 num_opps = 1
 
 # hero_hand = deck.draw(2)
-hero_hand = [Card.new('As'), Card.new('2d')]
+hero_hand = [Card.new('8d'), Card.new('9d')]
 # villain_hand = deck.draw(2)
-villain_hand = [Card.new('7d'), Card.new('8d')]
+villain_hand = [Card.new('As'), Card.new('Kc')]
 print("Hero's hand:")
 Card.print_pretty_cards(hero_hand)
 
@@ -25,13 +26,23 @@ preflop_monte_carlo(hero_hand, 2)
 print("---Villain---")
 preflop_monte_carlo(villain_hand, 2)
 print("--------------------")
+print("------Odds------")
+mc_odds_calculator(hero_hand, villain_hand)
+print("--------------------")
+
+
+# remove hands from deck
+for card in hero_hand + villain_hand:
+    deck.cards.remove(card)
 
 # board = deck.draw(3)
-board = [Card.new('Ac'), Card.new('5c'), Card.new('9d')]
+
+board = [Card.new('7d'), Card.new('Td'), Card.new('Ac')]
+for card in board:
+    deck.cards.remove(card)
 
 # remove the cards from the heros hand, villains hand and the board from the deck
-for card in hero_hand + villain_hand + board:
-    deck.cards.remove(card)
+
 
 print("Board:")
 Card.print_pretty_cards(board)
@@ -42,9 +53,9 @@ print("--------------------")
 
 print("------HSE1------")
 print("---Hero---")
-hse_1(board, hero_hand, num_opps)
+hse_1(board, hero_hand)
 print("---Villain---")
-hse_1(board, villain_hand, num_opps)
+hse_1(board, villain_hand)
 
 print("--------------------")
 
@@ -65,6 +76,13 @@ print("Villain's hand rank: ", percentage_rank(board, villain_hand))
 
 print("--------------------")
 
+print("------HSE1------")
+print("---Hero---")
+hse_1(board, hero_hand)
+print("---Villain---")
+hse_1(board, villain_hand)
+print("--------------------")
+
 print("------HandPotential1------")
 print("---Hero---")
 HandPotential_1(board, hero_hand)
@@ -81,6 +99,13 @@ Card.print_pretty_cards(board)
 print("Hero's hand rank: ", percentage_rank(board, hero_hand))
 print("Villain's hand rank: ", percentage_rank(board, villain_hand))
 
+print("--------------------")
+
+print("------HSE1------")
+print("---Hero---")
+hse_1(board, hero_hand)
+print("---Villain---")
+hse_1(board, villain_hand)
 print("--------------------")
 
 hero_rank = evaluator.evaluate(board, hero_hand)
@@ -100,7 +125,7 @@ Card.print_pretty_cards(best_hero_hand)
 print("Villain's best hand:")
 Card.print_pretty_cards(best_villain_hand)
 
-if hero_rank_class < villain_rank_class:
+if hero_rank < villain_rank:
     print("Hero wins!")
-elif hero_rank_class > villain_rank_class:
+elif hero_rank > villain_rank:
     print("Villain wins!")

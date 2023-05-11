@@ -28,7 +28,7 @@ def preflop_monte_carlo(hand, num_opps, iterations=100000):
             
             if hero_score < min(villain_scores):
                 wins += 1
-            elif hero_score == max(villain_scores):
+            elif hero_score == min(villain_scores):
                 ties += 1
             else:
                 losses += 1
@@ -40,6 +40,8 @@ def preflop_monte_carlo(hand, num_opps, iterations=100000):
         print("Ties: ", ties)
         print("Monte Carlo WP: ", wp)
 
+
+# wont run - approx 2 billion cases 
 def preflop_wp(hand):
     wins = 0
     ties = 0

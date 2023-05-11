@@ -1,0 +1,133 @@
+Hero's hand:
+  [ 8 ♦ ] , [ 9 ♦ ]  
+Villain's hand:
+  [ A ♠ ] , [ K ♣ ]  
+--------------------
+------Preflop------
+---Hero---
+Number of Opponents:  1
+Wins:  48918
+Losses:  47268
+Ties:  3814
+Monte Carlo WP:  0.50825
+---Villain---
+Number of Opponents:  1
+Wins:  64517
+Losses:  33795
+Ties:  1688
+Monte Carlo WP:  0.65361
+--------------------
+------Odds------
+Hero WP:  0.3617145133122951
+Villain WP:  0.6382854866877049
+--------------------
+Board:
+  [ 7 ♦ ] , [ T ♦ ] , [ A ♣ ]  
+Hero's hand rank:  0.12168319485392654
+Villain's hand rank:  0.5514607343875637
+--------------------
+------HSE1------
+---Hero---
+Hero best hand:
+  [ 7 ♦ ] , [ T ♦ ] , [ A ♣ ] , [ 8 ♦ ] , [ 9 ♦ ]  
+Rank:  6554
+Class:  High Card
+Wins:  280
+Losses:  792
+Ties:  9
+HSE:  0.2631822386679001
+---Villain---
+Hero best hand:
+  [ 7 ♦ ] , [ T ♦ ] , [ A ♣ ] , [ A ♠ ] , [ K ♣ ]  
+Rank:  3347
+Class:  Pair
+Wins:  1047
+Losses:  28
+Ties:  6
+HSE:  0.971322849213691
+--------------------
+------HandPotential2------
+---Hero---
+HP:  [[232446, 21161, 23593], [3240, 5625, 45], [470917, 6658, 306505]]
+HPTotal:  [277200, 8910, 784080]
+Ppot:  0.6000907955964135
+Npot:  0.11952046415714236
+---Villain---
+HP:  [[894705, 2728, 139097], [0, 5445, 495], [5099, 78, 22543]]
+HPTotal:  [1036530, 5940, 27720]
+Ppot:  0.15264408793820558
+Npot:  0.13497606645754795
+--------------------
+Board:
+  [ 7 ♦ ] , [ T ♦ ] , [ A ♣ ] , [ K ♦ ]  
+Hero's hand rank:  0.8634414366121683
+Villain's hand rank:  0.6689895470383276
+--------------------
+------HSE1------
+---Hero---
+Hero best hand:
+  [ 7 ♦ ] , [ T ♦ ] , [ K ♦ ] , [ 8 ♦ ] , [ 9 ♦ ]  
+Rank:  1019
+Class:  Flush
+Wins:  1017
+Losses:  18
+Ties:  0
+HSE:  0.9826086956521739
+---Villain---
+Hero best hand:
+  [ T ♦ ] , [ A ♣ ] , [ K ♦ ] , [ A ♠ ] , [ K ♣ ]  
+Rank:  2470
+Class:  Two Pair
+Wins:  963
+Losses:  68
+Ties:  4
+HSE:  0.9323671497584541
+--------------------
+------HandPotential1------
+---Hero---
+  [ 7 ♦ ] , [ T ♦ ] , [ A ♣ ] , [ K ♦ ]  
+  [ 8 ♦ ] , [ 9 ♦ ]  
+HP:  [[43804, 0, 944], [0, 0, 0], [25, 0, 767]]
+HPTotal:  [44748, 0, 792]
+Ppot:  0.03156565656565657
+Npot:  0.021095914901224637
+---Villain---
+  [ 7 ♦ ] , [ T ♦ ] , [ A ♣ ] , [ K ♦ ]  
+  [ A ♠ ] , [ K ♣ ]  
+HP:  [[37497, 0, 4875], [0, 158, 18], [256, 0, 2736]]
+HPTotal:  [42372, 176, 2992]
+Ppot:  0.08080808080808081
+Npot:  0.11478800413650465
+--------------------
+Board:
+  [ 7 ♦ ] , [ T ♦ ] , [ A ♣ ] , [ K ♦ ] , [ Q ♣ ]  
+Hero's hand rank:  0.8634414366121683
+Villain's hand rank:  0.669257571696596
+--------------------
+------HSE1------
+---Hero---
+Hero best hand:
+  [ 7 ♦ ] , [ T ♦ ] , [ K ♦ ] , [ 8 ♦ ] , [ 9 ♦ ]  
+Rank:  1019
+Class:  Flush
+Wins:  972
+Losses:  18
+Ties:  0
+HSE:  0.9818181818181818
+---Villain---
+Hero best hand:
+  [ A ♣ ] , [ K ♦ ] , [ Q ♣ ] , [ A ♠ ] , [ K ♣ ]  
+Rank:  2468
+Class:  Two Pair
+Wins:  769
+Losses:  217
+Ties:  4
+HSE:  0.7787878787878788
+--------------------
+Hero's rank:  Flush
+Villain's rank:  Two Pair
+Hero's best hand:
+  [ 7 ♦ ] , [ T ♦ ] , [ K ♦ ] , [ 8 ♦ ] , [ 9 ♦ ]  
+Villain's best hand:
+  [ A ♣ ] , [ K ♦ ] , [ Q ♣ ] , [ A ♠ ] , [ K ♣ ]  
+Hero wins!

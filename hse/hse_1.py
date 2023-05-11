@@ -2,7 +2,7 @@ from deuces import Card, Evaluator, Deck
 
 evaluator = Evaluator()
 
-def hse_1(board, hand, num_opps):
+def hse_1(board, hand):
     wins = 0
     losses = 0
     ties = 0
@@ -40,3 +40,4 @@ def hse_1(board, hand, num_opps):
 
     hse = (wins + ties / 2) / (wins + losses + ties)
     print("HSE: ", hse)
+    return hse
