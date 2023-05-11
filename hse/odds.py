@@ -26,8 +26,13 @@ def mc_odds_calculator(hero_hand, villain_hand):
         for card in board:
             deck.cards.append(card)
 
+    w_1 = hero_wins / (hero_wins + villain_wins)
+    w_2 = villain_wins / (hero_wins + villain_wins)
+
     print("Hero WP: ", hero_wins / (hero_wins + villain_wins))
     print("Villain WP: ", villain_wins / (hero_wins + villain_wins))
+
+    return w_1, w_2
 
 def odds_calculator(hero_hand, villain_hand):
     hero_wins = 0

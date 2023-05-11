@@ -40,6 +40,8 @@ def preflop_monte_carlo(hand, num_opps, iterations=100000):
         print("Ties: ", ties)
         print("Monte Carlo WP: ", wp)
 
+        return wp
+
 
 # wont run - approx 2 billion cases 
 def preflop_wp(hand):

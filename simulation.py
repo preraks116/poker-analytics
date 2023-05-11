@@ -11,9 +11,11 @@ evaluator = Evaluator()
 num_opps = 1
 
 # hero_hand = deck.draw(2)
-hero_hand = [Card.new('8d'), Card.new('9d')]
+hero_hand = [Card.new('As'), Card.new('9d')]
 # villain_hand = deck.draw(2)
-villain_hand = [Card.new('As'), Card.new('Kc')]
+villain_hand = [Card.new('Kc'), Card.new('3c')]
+
+
 print("Hero's hand:")
 Card.print_pretty_cards(hero_hand)
 
@@ -37,7 +39,7 @@ for card in hero_hand + villain_hand:
 
 # board = deck.draw(3)
 
-board = [Card.new('7d'), Card.new('Td'), Card.new('Ac')]
+board = [Card.new('6d'), Card.new('9c'), Card.new('Tc')]
 for card in board:
     deck.cards.remove(card)
 
@@ -53,17 +55,36 @@ print("--------------------")
 
 print("------HSE1------")
 print("---Hero---")
-hse_1(board, hero_hand)
+h_1 = hse_1(board, hero_hand)
 print("---Villain---")
-hse_1(board, villain_hand)
+h_2 = hse_1(board, villain_hand)
+
+print("--------------------")
+
+print("--------------------")
+
+print("------HP!------")
+print("---Hero---")
+HandPotential_1(board, hero_hand)
+print("---Villain---")
+HandPotential_1(board, villain_hand)
 
 print("--------------------")
 
 print("------HandPotential2------")
 print("---Hero---")
-HandPotential_2(board, hero_hand)
+pp_1, np_1 = HandPotential_2(board, hero_hand)
 print("---Villain---")
-HandPotential_2(board, villain_hand)
+pp_2, np_2 = HandPotential_2(board, villain_hand)
+print("--------------------")
+
+print("------EHS------")
+print("---Hero---")
+ehs_1 = h_1 + (1 - h_1) * pp_1
+print("EHS: ", ehs_1)
+print("---Villain---")
+ehs_2 = h_2 + (1 - h_2) * pp_2
+print("EHS: ", ehs_2)
 print("--------------------")
 
 turn = deck.draw(1)

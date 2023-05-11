@@ -66,3 +66,5 @@ def HandPotential_1(boardcards, ourcards):
     Npot = (HP[0][2] + HP[1][2]/2 + HP[0][1]/2) / (HPTotal[0] + HPTotal[1])
     print("Ppot: ", Ppot)
     print("Npot: ", Npot)
+
+    return Ppot

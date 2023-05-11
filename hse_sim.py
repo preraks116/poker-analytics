@@ -6,9 +6,9 @@ deck = Deck()
 evaluator = Evaluator()
 
 
-hand = [Card.new('2d'), Card.new('3h')]
+hand = [Card.new('2s'), Card.new('3c')]
 
-board = [Card.new('Kh'), Card.new('7c'), Card.new('2h')]
+board = [Card.new('Th'), Card.new('8h'), Card.new('6h')]
 
 h_1 = hse_1(board, hand)
 print("------")
