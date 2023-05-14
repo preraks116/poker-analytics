@@ -11,11 +11,11 @@ deck = Deck()
 evaluator = Evaluator()
 num_opps = 1
 
-c1 = '8d'
-c2 = '9d'
+c1 = 'Tc'
+c2 = '8s'
 
-c3 = '3s'
-c4 = '3c'
+c3 = '6s'
+c4 = '6d'
 
 # hero_hand = deck.draw(2)
 hero_hand = [Card.new(c1), Card.new(c2)]
@@ -46,7 +46,7 @@ for card in hero_hand + villain_hand:
 
 # board = deck.draw(3)
 
-board = [Card.new('7d'), Card.new('Td'), Card.new('Ac')]
+board = [Card.new('Th'), Card.new('8h'), Card.new('6h')]
 for card in board:
     deck.cards.remove(card)
 
