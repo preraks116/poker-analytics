@@ -135,7 +135,6 @@ def HandPotential_2(boardcards, ourcards):
     
 if __name__ == "__main__":
     deck = Deck()
-
     hand = [Card.new('7d'), Card.new('5c')]
     board = [Card.new('4h'), Card.new('3c'), Card.new('2h')]
 

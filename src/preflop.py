@@ -38,13 +38,13 @@ def preflop_monte_carlo(hand, num_opps, iterations=100000):
         print("Wins: ", wins)
         print("Losses: ", losses)
         print("Ties: ", ties)
-        print("Monte Carlo WP: ", mc_IR)
+        print("Monte Carlo IR: ", mc_IR)
 
         return mc_IR
 
 
 # wont run - approx 2 billion cases 
-def preflop_wp(hand):
+def preflop_ir(hand):
     wins = 0
     ties = 0
     losses = 0
@@ -83,9 +83,10 @@ def preflop_wp(hand):
     print("Wins: ", wins)
     print("Losses: ", losses)
     print("Ties: ", ties)
-    print("WP: ", mc_IR)
+    print("IR: ", mc_IR)
 
 
-
-
-
+if __name__ == '__main__':
+    hand = [Card.new('Ah'), Card.new('3c')]
+    preflop_monte_carlo(hand, 2)
+    # preflop_ir(hand)
