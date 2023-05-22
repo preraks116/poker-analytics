@@ -1,10 +1,9 @@
 from deuces import Card, Evaluator, Deck
-from hse.mc_preflop import preflop_monte_carlo
-from hse.hse_1 import hse_1
-from hse.hand_potential_1 import HandPotential_1
-from hse.hand_potential_2 import HandPotential_2
-from hse.percentage_rank import percentage_rank
-from hse.odds import mc_odds_calculator
+from preflop import preflop_monte_carlo
+from hse_sim import hse_1
+from hp import HandPotential_1, HandPotential_2
+from percentage_rank import percentage_rank
+from odds import mc_odds_calculator
 
 deck = Deck()
 evaluator = Evaluator()

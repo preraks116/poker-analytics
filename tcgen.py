@@ -3,7 +3,7 @@ from hse.mc_preflop import preflop_monte_carlo
 from hse.hse_1 import hse_1
 from hse.hand_potential_1 import HandPotential_1
 from hse.hand_potential_2 import HandPotential_2
-from hse.percentage_rank import percentage_rank
+from percentage_rank import percentage_rank
 from hse.odds import mc_odds_calculator
 import pandas as pd
 
@@ -50,9 +50,6 @@ board = [Card.new('Th'), Card.new('8h'), Card.new('6h')]
 for card in board:
     deck.cards.remove(card)
 
-# remove the cards from the heros hand, villains hand and the board from the deck
-
-
 print("Board:")
 Card.print_pretty_cards(board)
 print("Hero's hand rank: ", percentage_rank(board, hero_hand))
@@ -94,9 +91,6 @@ ehs_2 = h_2 + (1 - h_2) * pp_2
 print("EHS: ", ehs_2)
 print("--------------------")
 
-# make a dataframe with the following columns
-# | Hand | Odds | MC Preflop | HSE | HP1 | HP2 | EHS | 
-# for both hands
 
 # initialize df
 df = pd.DataFrame(columns=['Hand', 'Odds', 'MC Preflop', 'HSE', 'HP1', 'HP2', 'EHS'])
@@ -108,13 +102,3 @@ Card.print_pretty_cards(hero_hand)
 print(round(o_1,3), "&", round(mcp_1, 3), "&", round(h_1, 3), "&", round(pp_1, 3), "&", round(np_1, 3), "&", round(ehs_1, 3), "& g")
 Card.print_pretty_cards(villain_hand)
 print(round(o_2,3), "&", round(mcp_2, 3), "&", round(h_2, 3), "&", round(pp_2, 3), "&", round(np_2, 3), "&", round(ehs_2, 3), "& g")
-
-
-
-# # add hero hand
-# df.loc[0] = [Card.print_pretty_cards(hero_hand), o_1, mcp_1, h_1, pp_1, ehs_1]
-# # add villain hand
-# df.loc[1] = [Card.print_pretty_cards(villain_hand), o_2, mcp_2, h_2, pp_2, ehs_2]
-
-# # print db
-# print(df)

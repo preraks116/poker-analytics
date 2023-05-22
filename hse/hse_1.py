@@ -41,3 +41,12 @@ def hse_1(board, hand):
     hse = (wins + ties / 2) / (wins + losses + ties)
     print("HSE: ", hse)
     return hse
+
+if __name__ == "__main__":
+    deck = Deck()
+
+    hand = [Card.new('2s'), Card.new('3c')]
+
+    board = [Card.new('Th'), Card.new('8h'), Card.new('6h')]
+
+    hse_1(board, hand)
