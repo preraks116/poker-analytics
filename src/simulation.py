@@ -1,6 +1,6 @@
 from deuces import Card, Evaluator, Deck
 from preflop import preflop_monte_carlo
-from hse_sim import hse_1
+from hse import hse_1
 from hp import HandPotential_1, HandPotential_2
 from percentage_rank import percentage_rank
 from odds import mc_odds_calculator
